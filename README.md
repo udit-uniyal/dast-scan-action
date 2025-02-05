@@ -8,7 +8,7 @@
 
 **Description**  
 
-This GitHub Action performs a Dynamic Application Security Testing (DAST) scan using OWASP ZAP and uploads the scan results to the AccuKnox CSPM panel. This action can be configured with specific inputs to integrate seamlessly into your DevSecOps pipeline.
+This GitHub Action performs a Dynamic Application Security Testing (DAST) scan and uploads the scan results to the AccuKnox CSPM panel. This action can be configured with specific inputs to integrate seamlessly into your DevSecOps pipeline.
 
 ## Inputs
 
@@ -20,7 +20,7 @@ This GitHub Action performs a Dynamic Application Security Testing (DAST) scan u
 | `tenant_id`         | The ID of the tenant associated with the AccuKnox CSPM dashboard.                                            | Yes       |               |
 | `label`             | Label created in AccuKnox SaaS to associate the scan results.                                                | Yes       |               |
 | `severity_threshold`| Minimum severity level (e.g., High, Medium, Low, Informational) that will cause the pipeline to fail.       | Yes       |               |
-| `scan_type`         | Type of ZAP scan to run: `baseline` or `full-scan`.                                                          | Yes       | `full-scan`   |
+| `scan_type`         | Type of scan to run: `baseline` or `full-scan`.                                                          | Yes       | `full-scan`   |
 
 ## Usage
 
@@ -88,7 +88,7 @@ Add the following secrets in your GitHub repository under **Settings > Secrets**
 
 ## How It Works
 
-1. **OWASP ZAP DAST Scan**: The action initiates a DAST scan on the specified `target_url` using OWASP ZAP.
+1. **AccuKnox DAST Scan**: The action initiates a DAST scan on the specified `target_url`.
 2. **AccuKnox Report Generation**: Generates a report in JSON format.
 3. **Report Upload**: The report is uploaded to the AccuKnox CSPM panel for centralized monitoring and insights.
 4. **Severity Check**: The action checks for vulnerabilities that meet or exceed the specified `severity_threshold`. If any are found, the workflow fails.
