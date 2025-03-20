@@ -1,5 +1,5 @@
-name: AccuKnox ZAP DAST Scan
-description: Run a ZAP scan (full or baseline) and upload the reports to the AccuKnox CSPM panel.
+name: AccuKnox DAST
+description: Run a DAST (full or baseline) and upload the reports to the AccuKnox CSPM panel.
 
 inputs:
   target_url:
@@ -21,21 +21,21 @@ inputs:
     description: "The minimum severity level (e.g., High, Medium, Low, Informational) that will cause the pipeline to fail if present in the report."
     required: true
   scan_type:
-    description: "Type of ZAP scan to run: 'baseline' or 'full-scan'."
+    description: "Type of scan to run: 'baseline' or 'full-scan'."
     required: true
     default: "full-scan"
 
 runs:
   using: "composite"
   steps:
-    - name: Set permissions for ZAP output directory
+    - name: Set permissions for output directory
       run: |
         mkdir -p /tmp/zap
         chmod a+w /tmp/zap
         ls -la /tmp/zap
       shell: bash
 
-    - name: Run ZAP Scan
+    - name: Run DAST
       run: |
         if [ "${{ inputs.scan_type }}" == "baseline" ]; then
           SCAN_COMMAND="zap-baseline.py -t ${{ inputs.target_url }} -J report.json -I"
@@ -48,13 +48,13 @@ runs:
           -t zaproxy/zap-stable $SCAN_COMMAND
       shell: bash
 
-    - name: View ZAP Report
+    - name: View Report
       run: |
         cat /tmp/zap/report.json
       shell: bash
 
 
-    - name: Upload ZAP Report to AccuKnox CSPM Panel
+    - name: Upload DAST Report to AccuKnox CSPM Panel
       run: |
         response=$(curl --location --request POST "https://${{ inputs.accuknox_endpoint }}/api/v1/artifact/?tenant_id=${{ inputs.tenant_id }}&data_type=ZAP&label_id=${{ inputs.label }}&save_to_s3=true" \
           --header "Tenant-Id: ${{ inputs.tenant_id }}" \
