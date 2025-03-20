@@ -15,10 +15,10 @@ This GitHub Action performs a Dynamic Application Security Testing (DAST) scan a
 | Input               | Description                                                                                                  | Required  | Default       |
 |---------------------|--------------------------------------------------------------------------------------------------------------|-----------|---------------|
 | `target_url`        | The URL of the web application to scan.                                                                      | Yes       |               |
-| `accuknox_token`    | Token for authenticating with the AccuKnox.                                                       | Yes       |               |
-| `accuknox_endpoint` | The URL of the AccuKnox where scan results will be uploaded.                                      | Yes       |               |
-| `tenant_id`         | The ID of the tenant associated with the AccuKnox dashboard.                                            | Yes       |               |
-| `label`             | Label created in AccuKnox to associate the scan results.                                                | Yes       |               |
+| `accuknox_token`    | Token for authenticating with the AccuKnox Console.                                                       | Yes       |               |
+| `accuknox_endpoint` | The URL of the AccuKnox Console where scan results will be uploaded.                                      | Yes       |               |
+| `tenant_id`         | The ID of the tenant associated with the AccuKnox Console.                                            | Yes       |               |
+| `label`             | Label created in AccuKnox Console to associate the scan results.                                                | Yes       |               |
 | `severity_threshold`| Minimum severity level (e.g., High, Medium, Low, Informational) that will cause the pipeline to fail.       | Yes       |               |
 | `scan_type`         | Type of scan to run: `baseline` or `full-scan`.                                                          | Yes       | `full-scan`   |
 
