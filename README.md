@@ -8,7 +8,7 @@
 
 **Description**  
 
-This GitHub Action performs a Dynamic Application Security Testing (DAST) scan and uploads the scan results to the AccuKnox CSPM panel. This action can be configured with specific inputs to integrate seamlessly into your DevSecOps pipeline.
+This GitHub Action performs a Dynamic Application Security Testing (DAST) scan and uploads the scan results to the AccuKnox Console. This action can be configured with specific inputs to integrate seamlessly into your DevSecOps pipeline.
 
 ## Inputs
 
